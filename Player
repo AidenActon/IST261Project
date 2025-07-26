@@ -1,0 +1,62 @@
+import java.util.ArrayList;
+
+// Noun - Player / Verb - Escape / By Cody Impson
+//the player is going to be the player playing the game. later as we develop the code we will
+// make it to where we can name the characters maybe or even select male or female. Also every
+// plater will have an iventory with a limited amount of inventory slots that we will have to
+// determine later and maybe offer upgrades.  there will also be secret keys offered.
+public class Player {
+    private String Name;
+    private ArrayList<Item> inventory;
+    private String currentRoom;
+    private boolean hasEscaped;
+
+    //constructor initializes and also sets up playerin room with name in room
+    // also inventory may be empty at start and player will definitely not be escaped
+    public Player(String Name, String startingRoom) {
+        this.Name = Name;
+        this.currentRoom = startingRoom;
+        this.inventory = new ArrayList<>();
+        this.hasEscaped = false;
+    }
+    //getters and setters
+    public String getName() {
+        return Name;
+    }
+    public void setName(String Name) {
+        this.Name = Name;
+    }
+    public ArrayList<Item> getInventory() {
+        return inventory;
+    }
+    public void setInventory(ArrayList<Item> inventory) {
+        this.inventory = inventory;
+    }
+    public String getCurrentRoom() {
+        return currentRoom;
+    }
+    public void setCurrentRoom(String currentRoom) {
+        this.currentRoom = currentRoom;
+    }
+    //player tries to escape then system checks to see if the player has escaped
+    // and then returning value
+    public void escape () {
+        this.hasEscaped = true;
+    }
+    public boolean isHasEscaped() {
+        return hasEscaped;
+    }
+    public void setHasEscaped(boolean hasEscaped) {
+        this.hasEscaped = hasEscaped;
+    }
+    //message to print out player inventory and all info and current room
+    // and if they are escaped
+    public String toString() {
+        StringBuilder inventoryString = new StringBuilder();
+        for (Item item : inventory) {
+            inventoryString.append(item.toString()).append(",");
+        }
+        return "player: " + Name + ", current room" + currentRoom
+                + "inventory:" + inventoryString.toString() + ", hasEscaped: " + hasEscaped;
+    }
+}
