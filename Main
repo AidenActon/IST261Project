@@ -1,0 +1,31 @@
+import java.util.ArrayList;
+
+public class Main {
+    public static void main(String[] args) {
+        TestHarness th = new TestHarness();//testharness class-cody
+        Item i = new Item("Key", "A small silver key", true);
+        Item i2 = new Item("Rock", "Just a regular rock", false);
+
+
+//needed to create the items and add to array list for it to work with printable objects-cody
+//i had the following in from the video but removed them:
+//        Key i = new Key("Key", "Small silver key", true, "old door");
+//        Bat i2 = new Bat("Bat", "brown wood old", true, 1);
+// if they need to be added I can add them back in, but it would not run with them in because
+// I was getting errors that they were already added from the interface test-cody
+
+        ArrayList<Printable> printableObjects = new ArrayList<>();
+        printableObjects.add(i);
+        printableObjects.add(i2);
+        for (Printable p : printableObjects) {
+            p.printSetup();
+            p.print();
+        }
+        ArrayList<Item> items = new ArrayList<>();
+        items.add(i);
+        items.add(i2);
+        for (Item item : items) {
+            System.out.println(item.toString());
+        }
+    }
+}
