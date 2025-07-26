@@ -1,0 +1,68 @@
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class PuzzleTest {
+//I pulled Aeden's Puzzle Java for my second JUnit test
+    @Test
+    void getPuzzleID() {//so i pulled his riddle and googled some cool ideas for the riddle idea and answer
+        Puzzle puzzle = new Puzzle("riddle_door", "What has keys that won't open a lock?", "Piano");
+        assertEquals("riddle_door", puzzle.getPuzzleID());
+    }
+
+    @Test
+    void setPuzzleID() {
+        Puzzle puzzle = new Puzzle("riddle_door", "What has keys that won't open a lock?", "Piano");
+        puzzle.setPuzzleID("math_puzzle");
+        assertEquals("math_puzzle", puzzle.getPuzzleID());
+    }
+
+    @Test
+    void getPuzzleDescription() {
+        Puzzle puzzle = new Puzzle("riddle_door", "What has keys that won't open a lock?", "Piano");
+        assertEquals("What has keys that won't open a lock?", puzzle.getPuzzleDescription());
+    }
+
+    @Test
+    void setPuzzleDescription() {
+        Puzzle puzzle = new Puzzle("riddle_door", "What has keys that won't open a lock?", "Piano");
+        puzzle.setPuzzleDescription("What number do you get when you multiply all of the numbers on a telephone keypad" );
+        assertEquals("What number do you get when you multiply all of the numbers on a telephone keypad", puzzle.getPuzzleDescription());
+    }
+
+    @Test
+    void getSolution() {
+        Puzzle puzzle = new Puzzle("riddle_door", "What has keys that won't open a lock?", "Piano");
+        assertEquals("Piano", puzzle.getSolution());
+    }
+
+    @Test
+    void setSolution() {
+        Puzzle puzzle = new Puzzle("riddle_door", "What has keys that won't open a lock?", "Piano");
+        puzzle.setSolution("Piano");
+    }
+
+    @Test
+    void isSolved() {
+        Puzzle puzzle = new Puzzle("riddle_door", "What has keys that won't open a lock?", "Piano");
+        assertFalse(puzzle.isSolved());
+        puzzle.attemptSolve("Piano");
+        assertTrue(puzzle.isSolved());
+    }
+
+    @Test
+    void attemptSolve() {
+        Puzzle puzzle = new Puzzle("riddle_door", "What has keys that won't open a lock?", "Piano");
+        assertTrue(puzzle.attemptSolve("Piano"));
+        assertTrue(puzzle.isSolved());
+    }
+
+    @Test
+    void testToString() {
+        Puzzle puzzle = new Puzzle("riddle_door", "What has keys that won't open a lock?", "Piano");
+        assertTrue(puzzle.toString().contains("riddle_door"));
+        assertTrue(puzzle.toString().contains("What has keys that won't open a lock?"));
+        assertTrue(puzzle.toString().contains("Piano"));
+        assertTrue(puzzle.isSolved());
+    }
+}
