@@ -1,0 +1,17 @@
+import javax.swing.*;
+
+public class ItemUI {
+    private JTextField ItemName;
+    private JTextField ItemDescription;
+    private JTextField IsCollectible;
+    private JButton btnNext;
+    private JButton btnPrevious;
+    private JButton btnQuit;
+    private JButton btnUpdate;
+    private JButton btnDelete;
+    private JButton btnAdd;
+
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
+    }
+}
