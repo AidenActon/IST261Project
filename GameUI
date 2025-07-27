@@ -1,6 +1,6 @@
 import javax.swing.*;
 
-public class ItemUI {
+public class GameUI {
     private JTextField ItemName;
     private JTextField ItemDescription;
     private JTextField IsCollectible;
