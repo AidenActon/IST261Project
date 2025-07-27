@@ -1,0 +1,101 @@
+//author: aiden acton
+// UI view for the main view the player will see
+//room info will change based on the room the player is in, but the controls/buttons wont
+import javax.swing.*;
+import java.awt.*;
+
+public class GUI extends JFrame {
+
+    private JTextField roomNum;
+    private JTextField roomName;
+    private JTextField desc;
+    private JTextField ID;
+    private JTextField input;
+    //-------------------
+    private JButton backBtn;
+    private JButton nextBtn;
+    private JButton inventoryBtn;
+    private JButton searchRoomBtn;
+
+    public GUI() {
+        setTitle("main view");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(600, 400);
+        setLocationRelativeTo(null);
+        setLayout(new GridBagLayout()); // lets us be flexible with layout
+
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(5, 5, 5, 5);
+
+        // top panel with room info and such
+        gbc.anchor = GridBagConstraints.WEST;
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        add(new JLabel("Room #:"), gbc);
+
+        gbc.gridx = 1;
+        roomNum = new JTextField(15);
+        add(roomNum, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        add(new JLabel("Room Name:"), gbc);
+
+        gbc.gridx = 1;
+        roomName = new JTextField(15);
+        add(roomName, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        add(new JLabel("Description:"), gbc);
+
+        gbc.gridx = 1;
+        desc = new JTextField(15);
+        add(desc, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 3;
+        add(new JLabel("Room ID:"), gbc);
+
+        gbc.gridx = 1;
+        ID = new JTextField(15);
+        add(ID, gbc);
+
+        //line to separate top from bottom
+        gbc.gridx = 0;
+        gbc.gridy = 4;
+        gbc.gridwidth = 3;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        JSeparator separator = new JSeparator(SwingConstants.HORIZONTAL);
+        add(separator, gbc);
+        gbc.gridwidth = 1;
+        gbc.fill = GridBagConstraints.NONE;
+
+        //bottom panel with input bar and controls
+        gbc.gridy = 5;
+        gbc.gridx = 0;
+        backBtn = new JButton("Back");
+        add(backBtn, gbc);
+
+        gbc.gridx = 1;
+        input = new JTextField(20);
+        add(input, gbc);
+
+        gbc.gridx = 2;
+        nextBtn = new JButton("Next");
+        add(nextBtn, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 6;
+        inventoryBtn = new JButton("Inventory");
+        add(inventoryBtn, gbc);
+
+        gbc.gridx = 2;
+        searchRoomBtn = new JButton("Search Room");
+        add(searchRoomBtn, gbc);
+
+        setVisible(true);
+    }
+
+
+}
