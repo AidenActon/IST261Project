@@ -1,0 +1,17 @@
+public class Key extends Item {
+    private String unlocks;
+
+    private int Key;
+    public Key(String name, String description, boolean isCollectible, String unlocks) {
+        super(name, description, isCollectible);
+
+        this.unlocks = unlocks;
+    }
+    public void use () {
+        System.out.println("Key unlocks door" + unlocks + ".");
+    }
+    public String toString() {
+        return "Key " + this.Key + " " + this.unlocks;
+    }
+
+}

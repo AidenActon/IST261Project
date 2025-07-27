@@ -1,0 +1,15 @@
+public class Bat extends Item {
+    private int damage;
+
+    public Bat(String name, String description, boolean isCollectible, int damage) {
+        super(name, description, isCollectible);
+        this.damage = damage;
+    }
+        public void use() {
+            System.out.println("swing the bat and it deals" + this.damage + "damage");
+        }
+        public String toString(){
+            return "Bat" + super.toString() + ", damage" + damage;
+
+    }
+}

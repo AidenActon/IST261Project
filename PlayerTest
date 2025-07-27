@@ -1,0 +1,83 @@
+import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class PlayerTest {
+
+    @Test//so this should be me starting off in room 1 and about to pick my character
+    //and setting the name to what i want it to be-cody
+    void getName() {
+        Player player = new Player("Bob", "Room1");
+        assertEquals("Bob", player.getName());
+    }
+
+    @Test
+    void setName() {
+        Player player = new Player("Bob", "Room1");
+        player.setName("Bob");
+        assertEquals("Bob", player.getName());
+    }
+
+    @Test//in theory this would pull any inventory-cody
+    void getInventory() {
+        Player player = new Player("Bob", "Room1");
+        assertTrue(player.getInventory().isEmpty());
+    }
+
+    @Test//this was the more difficult portion as i had to continuously come back and
+    //change this portion over and over. what i found out was that i took a shortcut and
+    //started at the top and pasted all setters all the way dawon and this was trying
+    //to set for name instead of inventory so i finally made the change-cody
+    void setInventory() {
+        Player player = new Player("Bob", "Room1");
+        ArrayList<Item> Item = new ArrayList<>();
+        Item.add(new Item("bat", "old", true));
+        player.setInventory(Item);
+        assertEquals(1, player.getInventory().size());
+        assertEquals("bat", player.getInventory().get(0).getName());
+    }
+
+    @Test//in my mind the system check this and sees where the player is
+    //then the system runs a check to see if the player can escape or has escaped.
+    //this may change with the team and may go a different way-cody
+    void getCurrentRoom() {
+        Player player = new Player("Bob", "Room1");
+        assertEquals("Room1", player.getCurrentRoom());
+    }
+
+    @Test
+    void setCurrentRoom() {
+        Player player = new Player("Bob", "Room1");
+        assertEquals("Room1", player.getCurrentRoom());
+    }
+
+    @Test
+    void escape() {
+        Player player = new Player("Bob", "Room1");
+        player.escape();
+        assertTrue(player.isHasEscaped());
+    }
+
+    @Test
+    void isHasEscaped() {
+        Player player = new Player("Bob", "Room1");
+        assertFalse(player.isHasEscaped());
+        player.setHasEscaped(true);
+    }
+
+    @Test
+    void setHasEscaped() {
+        Player player = new Player("Bob", "Room1");
+        assertFalse(player.isHasEscaped());
+        player.setHasEscaped(true);
+    }
+
+    @Test
+    void testToString() {
+        Player player = new Player("Bob", "Room1");
+        String result = player.toString();
+        assertEquals("Bob", result);
+    }
+}
