@@ -1,0 +1,46 @@
+//Author Aiden acton
+import java.io.*;
+
+public class Persist {
+    private static final String FILE_NAME = "player_data.ser";
+
+    // Serialize Player object (without Item serialization)
+    public static void savePlayer(Player player) {
+        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(FILE_NAME))) {
+            out.writeObject(new PlayerSerializableWrapper(player));
+            System.out.println("Player data saved successfully.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // deserialize? i hope
+    public static Player loadPlayer() {
+        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(FILE_NAME))) {
+            PlayerSerializableWrapper wrapper = (PlayerSerializableWrapper) in.readObject();
+            return wrapper.toPlayer();
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    // Internal static wrapper class to make Player serializable without Item
+    private static class PlayerSerializableWrapper implements Serializable {
+        private String name;
+        private String currentRoom;
+        private boolean hasEscaped;
+
+        public PlayerSerializableWrapper(Player player) {
+            this.name = player.getName();
+            this.currentRoom = player.getCurrentRoom();
+            this.hasEscaped = player.isHasEscaped();
+        }
+
+        public Player toPlayer() {
+            Player p = new Player(name, currentRoom);
+            p.setHasEscaped(hasEscaped);
+            return p;
+        }
+    }
+}
